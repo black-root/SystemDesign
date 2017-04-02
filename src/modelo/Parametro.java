@@ -1,7 +1,9 @@
 
 package modelo;
 
+import controlador.Conexion;
 import static java.rmi.Naming.list;
+import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.List;
 
@@ -56,6 +58,47 @@ public class Parametro {
      */
     public void setValor(String Valor) {
         this.Valor = Valor;
+    }
+    
+    public static void obtener(){
+    Conexion cn = new Conexion();
+        try{
+        cn.conectar();
+        cn.UID("SELECT * FROM parametro");
+        
+        //Parametro prm = new Parametro();//creamos el objeto persona
+        //ArrayList<Parametro> arrayList;
+        //arrayList = new ArrayList<Parametro>();
+        } catch (Exception e){
+             
+        }finally{
+            cn.desconectar();
+        }
+    
+    }
+    
+    public static Parametro obtenerUtilidad(){
+     Conexion cn= new Conexion();
+     Parametro prm = new Parametro();
+
+     try {
+           cn.conectar();
+           cn.UID("SELECT precio from producto WHERE");
+           prm.setValor(0.05);
+           //// calcular la utilidad, que metodo usar?
+           cn.desconectar();
+        } catch (Exception e) {
+        
+        
+        }finally{
+        
+        
+        }
+    return prm;
+    }
+
+    private void setValor(double d) {
+         
     }
     
 }
