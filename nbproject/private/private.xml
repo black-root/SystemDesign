@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/dani/Documentos/diseño/SystemDesign/TiendaAPP/src/modelo/Venta.java</file>
-            <file>file:/home/dani/Documentos/diseño/SystemDesign/TiendaAPP/src/modelo/Compra.java</file>
+            <file>file:/media/sigfrid/1A73-78F6/diseño%20sistemas/TiendaAPP/src/controlador/ControladorVenta.java</file>
+            <file>file:/media/sigfrid/1A73-78F6/diseño%20sistemas/TiendaAPP/src/modelo/Proveedor.java</file>
+            <file>file:/media/sigfrid/1A73-78F6/diseño%20sistemas/TiendaAPP/src/controlador/ErrorTienda.java</file>
+            <file>file:/media/sigfrid/1A73-78F6/diseño%20sistemas/TiendaAPP/src/modelo/Parametro.java</file>
         </group>
     </open-files>
 </project-private>

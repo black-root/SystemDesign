@@ -85,13 +85,13 @@ public class Parametro {
            cn.conectar();
            cn.UID("SELECT precio from producto WHERE");
            prm.setValor(0.05);
-           //// calcular la utilidad, que metodo usar?
+           //// calcular la utilidad, que metodo usar
            cn.desconectar();
         } catch (Exception e) {
         
         
         }finally{
-        
+        cn.desconectar();
         
         }
     return prm;
