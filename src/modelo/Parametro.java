@@ -54,9 +54,9 @@ public class Parametro {
             ResultSet rs = cn.getValores("SELECT * FROM parametro");
             while (rs.next()) {
                 int id = rs.getInt("idParametro");
-                String n = rs.getString("Nombre");
-                String v = rs.getString("Nombre");
-                Parametro user = new Parametro(id, n, v);
+                String nombre = rs.getString("Nombre");
+                String valor = rs.getString("Valor");
+                Parametro user = new Parametro(id, nombre, valor);
                 Lista.add(user);
             }
         } catch (SQLException e){
