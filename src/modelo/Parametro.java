@@ -2,7 +2,9 @@
 package modelo;
 
 import controlador.Conexion;
-import static java.rmi.Naming.list;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.List;
@@ -13,8 +15,10 @@ public class Parametro {
     private String Nombre;
     private String Valor;
     
-    
     public Parametro(){
+    
+    }
+    public Parametro(int id, String n, String v){
     
     }
 
@@ -60,35 +64,47 @@ public class Parametro {
         this.Valor = Valor;
     }
     
-    public static void obtener(){
+    public static List<Parametro> Obtener() throws Exception {
     Conexion cn = new Conexion();
+     List<Parametro> Lista = new ArrayList<>();
         try{
         cn.conectar();
-        cn.UID("SELECT * FROM parametro");
-        
-        //Parametro prm = new Parametro();//creamos el objeto persona
-        //ArrayList<Parametro> arrayList;
-        //arrayList = new ArrayList<Parametro>();
+           
+            ResultSet rs = cn.getValores("SELECT * FROM parametro");
+
+// Fetch each row from the result set
+            while (rs.next()) {
+                int id = rs.getInt("idParametro");
+                String n = rs.getString("Nombre");
+                String v = rs.getString("Nombre");
+                //Assuming you have a user object
+                Parametro user = new Parametro(id, n, v);
+                Lista.add(user);
+                
+            }
         } catch (Exception e){
-             
+             throw new Exception("se pordujo un error");
         }finally{
             cn.desconectar();
         }
-    
+       return Lista; 
     }
     
-    public static Parametro obtenerUtilidad(){
+    public static Parametro obtenerUtilidad() throws Exception{
      Conexion cn= new Conexion();
      Parametro prm = new Parametro();
-
+     String datos[] = new String[1];
      try {
            cn.conectar();
-           cn.UID("SELECT precio from producto WHERE");
-           prm.setValor(0.05);
+          String  idProducto = null;
+           ResultSet rsParametro = null;
+           rsParametro = cn.getValores("SELECT valor FROM parametro WHEN Nombre 'utilidad' ");
+           String valor=rsParametro.getString(1);
+           prm.setValor(valor);
            //// calcular la utilidad, que metodo usar
            cn.desconectar();
-        } catch (Exception e) {
-        
+        } catch (SQLException e) {
+        throw new Exception("se pordujo un error");
         
         }finally{
         cn.desconectar();
