@@ -22,44 +22,26 @@ public class Parametro {
     
     }
 
-    /**
-     * @return the IdParamatro
-     */
     public String getIdParamatro() {
         return IdParamatro;
     }
 
-    /**
-     * @param IdParamatro the IdParamatro to set
-     */
     public void setIdParamatro(String IdParamatro) {
         this.IdParamatro = IdParamatro;
     }
 
-    /**
-     * @return the Nombre
-     */
     public String getNombre() {
         return Nombre;
     }
 
-    /**
-     * @param Nombre the Nombre to set
-     */
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
 
-    /**
-     * @return the Valor
-     */
     public String getValor() {
         return Valor;
     }
 
-    /**
-     * @param Valor the Valor to set
-     */
     public void setValor(String Valor) {
         this.Valor = Valor;
     }
@@ -68,19 +50,14 @@ public class Parametro {
     Conexion cn = new Conexion();
      List<Parametro> Lista = new ArrayList<>();
         try{
-        cn.conectar();
-           
+        cn.conectar();           
             ResultSet rs = cn.getValores("SELECT * FROM parametro");
-
-// Fetch each row from the result set
             while (rs.next()) {
                 int id = rs.getInt("idParametro");
                 String n = rs.getString("Nombre");
                 String v = rs.getString("Nombre");
-                //Assuming you have a user object
                 Parametro user = new Parametro(id, n, v);
                 Lista.add(user);
-                
             }
         } catch (SQLException e){
              throw new ErrorTienda("se pordujo un error al obtener los parametros");
@@ -98,10 +75,9 @@ public class Parametro {
            cn.conectar();
           String  idProducto = null;
            ResultSet rsParametro = null;
-           rsParametro = cn.getValores("SELECT valor FROM parametro WHEN Nombre 'utilidad' ");
+           rsParametro = cn.getValores("SELECT valor FROM parametro WHEN Nombre  IS utilidad ");
            String valor=rsParametro.getString(1);
            prm.setValor(valor);
-           //// calcular la utilidad, que metodo usar
            cn.desconectar();
         } catch (SQLException e) {
         throw new ErrorTienda("se produjo un error al obtener la utilidad");
@@ -111,10 +87,6 @@ public class Parametro {
         
         }
     return prm;
-    }
-
-    private void setValor(double d) {
-         
     }
     
 }
