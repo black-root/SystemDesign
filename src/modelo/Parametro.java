@@ -2,11 +2,11 @@
 package modelo;
 
 import controlador.Conexion;
+import controlador.ErrorTienda;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.List;
 
 public class Parametro {
@@ -82,8 +82,8 @@ public class Parametro {
                 Lista.add(user);
                 
             }
-        } catch (Exception e){
-             throw new Exception("se pordujo un error");
+        } catch (SQLException e){
+             throw new ErrorTienda("se pordujo un error al obtener los parametros");
         }finally{
             cn.desconectar();
         }
@@ -104,7 +104,7 @@ public class Parametro {
            //// calcular la utilidad, que metodo usar
            cn.desconectar();
         } catch (SQLException e) {
-        throw new Exception("se pordujo un error");
+        throw new ErrorTienda("se produjo un error al obtener la utilidad");
         
         }finally{
         cn.desconectar();
